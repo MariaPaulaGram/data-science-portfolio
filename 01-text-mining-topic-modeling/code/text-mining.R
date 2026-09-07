@@ -320,3 +320,4 @@ topic_plot <- ggplot(
   theme_minimal()
 
 topic_plot
+
