@@ -68,3 +68,34 @@ glimpse(sociology_data)
 
 # Number of publications retrieved
 nrow(sociology_data)
+# ============================================================
+# 5. TEXT PREPROCESSING
+# ============================================================
+
+# The abstracts used in the analysis were previously cleaned,
+# normalized and processed, including stopword removal.
+
+# Create the text corpus from the cleaned abstracts
+topic_corpus <- corpus(socio_limp_2$abstract)
+
+# Tokenize the corpus
+topic_tok <- tokens(topic_corpus)
+
+# Inspect the tokenized corpus
+topic_tok
+
+
+# ============================================================
+# 6. DOCUMENT-FEATURE MATRIX
+# ============================================================
+
+topic_dfm <- dfm(topic_tok) %>%
+  dfm_trim(
+    min_termfreq = 0.8,
+    termfreq_type = "quantile",
+    max_docfreq = 0.1,
+    docfreq_type = "prop"
+  )
+
+# Inspect the resulting matrix
+topic_dfm
