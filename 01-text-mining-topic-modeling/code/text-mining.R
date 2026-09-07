@@ -17,7 +17,7 @@ library(ggraph)
 library(tidygraph)
 library(seededlda)
 library(tidytext)
-
+library(openalexR)
 
 # ============================================================
 # 2. DATA PREPARATION
