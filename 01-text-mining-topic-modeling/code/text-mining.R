@@ -99,3 +99,20 @@ topic_dfm <- dfm(topic_tok) %>%
 
 # Inspect the resulting matrix
 topic_dfm
+# ============================================================
+# 7. TF-IDF ANALYSIS
+# ============================================================
+
+# Calculate TF-IDF weights for the document-feature matrix
+
+tfidf_dfm <- dfm_tfidf(topic_dfm)
+
+# Identify the most important terms according to TF-IDF
+
+tfidf_frequency <- textstat_frequency(
+  tfidf_dfm,
+  n = 30
+)
+
+# Display the top 30 terms
+tfidf_frequency
