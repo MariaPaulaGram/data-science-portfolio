@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Sociology Research Intelligence</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="dashboard_files/libs/clipboard/clipboard.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="dashboard_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="dashboard_files/libs/quarto-html/popper.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="dashboard_files/libs/quarto-html/anchor.min.js"></script>
+<link href="dashboard_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="dashboard_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="dashboard_files/libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="dashboard_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="dashboard_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="dashboard_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="dashboard_files/libs/bootstrap/bootstrap-1a7f990651f02a572a2788f67260749d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="dark">
+<link href="dashboard_files/libs/bootstrap/bootstrap-dark-1a7f990651f02a572a2788f67260749d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="dashboard_files/libs/bootstrap/bootstrap-1a7f990651f02a572a2788f67260749d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="dark">
+<script src="dashboard_files/libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="dashboard_files/libs/quarto-dashboard/stickythead.js"></script>
+
+
+
+<script src="dashboard_files/libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="dashboard_files/libs/quarto-dashboard/components.js"></script>
+
+<link href="dashboard_files/libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+
+<script src="dashboard_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<script src="dashboard_files/libs/plotly-binding-4.12.1/plotly.js"></script>
+
+<script src="dashboard_files/libs/typedarray-0.1/typedarray.min.js"></script>
+
+<script src="dashboard_files/libs/jquery-3.5.1/jquery.min.js"></script>
+
+<link href="dashboard_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+
+<script src="dashboard_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+<link href="dashboard_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+
+<script src="dashboard_files/libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+
+<link href="dashboard_files/libs/vis-9.1.0/vis-network.min.css" rel="stylesheet">
+
+<script src="dashboard_files/libs/vis-9.1.0/vis-network.min.js"></script>
+
+<script src="dashboard_files/libs/visNetwork-binding-2.1.4/visNetwork.js"></script>
+
+
+
+</head>
+
+<body class="quarto-dashboard fullcontent quarto-light">
+
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">
+
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Sociology Research Intelligence</a></div>
+        <div class="navbar-subtitle">Computational analysis of Argentine scientific literature</div>
+        
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-overview" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#overview" data-scrolling="true" href="#overview" aria-controls="overview" aria-selected="true"><span class="nav-link-text">Overview</span></a></li><li class="nav-item" role="presentation"><a id="tab-topics-1" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#topics-1" data-scrolling="true" href="#topics-1" aria-controls="topics-1" aria-selected="false"><span class="nav-link-text">Topics</span></a></li><li class="nav-item" role="presentation"><a id="tab-text-relevance" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#text-relevance" data-scrolling="true" href="#text-relevance" aria-controls="text-relevance" aria-selected="false"><span class="nav-link-text">Text Relevance</span></a></li><li class="nav-item" role="presentation"><a id="tab-research-evolution" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#research-evolution" data-scrolling="true" href="#research-evolution" aria-controls="research-evolution" aria-selected="false"><span class="nav-link-text">Research Evolution</span></a></li><li class="nav-item" role="presentation"><a id="tab-network-analysis" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#network-analysis" data-scrolling="true" href="#network-analysis" aria-controls="network-analysis" aria-selected="false"><span class="nav-link-text">Network Analysis</span></a></li><li class="nav-item" role="presentation"><a id="tab-lda-topics" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#lda-topics" data-scrolling="true" href="#lda-topics" aria-controls="lda-topics" aria-selected="false"><span class="nav-link-text">LDA Topics</span></a></li><li class="nav-item" role="presentation"><a id="tab-methodology" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#methodology" data-scrolling="true" href="#methodology" aria-controls="methodology" aria-selected="false"><span class="nav-link-text">Methodology</span></a></li></ul></div></div>
+</nav>
+</header>
+<div class="page-layout-custom quarto-dashboard-content bslib-gap-spacing html-fill-container dashboard-scrolling quarto-dashboard-pages">  
+
+<style class="bslib-grid-item html-fill-item">
+
+/* ============================================================
+   GLOBAL
+============================================================ */
+
+body {
+  background: #070A10 !important;
+  color: #E8EDF7 !important;
+  font-family: Inter, Arial, sans-serif !important;
+}
+
+.dashboard-page {
+  background: #070A10 !important;
+}
+
+.navbar {
+  background: #080C14 !important;
+  border-bottom: 1px solid #1B2434 !important;
+}
+
+.navbar-title {
+  color: #F7F9FF !important;
+  font-weight: 800 !important;
+  letter-spacing: .3px;
+}
+
+.nav-link {
+  color: #8B96AA !important;
+  font-weight: 500 !important;
+}
+
+.nav-link:hover {
+  color: #22D3EE !important;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.card {
+  background: #0E141F !important;
+  border: 1px solid #1D2738 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 35px rgba(0,0,0,.35) !important;
+  overflow: hidden !important;
+}
+
+.card-header {
+  background: #0E141F !important;
+  border-bottom: 1px solid #1D2738 !important;
+  color: #F7F9FF !important;
+  font-weight: 700 !important;
+}
+
+.card-body {
+  background: #0E141F !important;
+}
+
+/* ============================================================
+   KPI
+============================================================ */
+
+.metric-box {
+  padding: 18px 20px;
+  min-height: 95px;
+}
+
+.metric-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #172234;
+  color: #22D3EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+
+.metric-value {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  color: #F7F9FF;
+}
+
+.metric-cyan {
+  color: #22D3EE !important;
+}
+
+.metric-label {
+  margin-top: 7px;
+  font-size: 10px;
+  color: #78859A;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   TOPIC CARDS
+============================================================ */
+
+.topic-box {
+  padding: 18px;
+  min-height: 105px;
+  border-radius: 15px;
+  background: #0E141F;
+  border: 1px solid #1D2738;
+}
+
+.topic-label {
+  color: #22D3EE;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.topic-title {
+  color: #F7F9FF;
+  font-size: 17px;
+  font-weight: 750;
+  margin-top: 7px;
+}
+
+.topic-text {
+  color: #8995AA;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* ============================================================
+   INSIGHT
+============================================================ */
+
+.insight-box {
+  padding: 17px 20px;
+  background: #0B111B;
+  border-left: 3px solid #22D3EE;
+  border-radius: 8px;
+  color: #AAB5C8;
+  font-size: 13px;
+}
+
+/* ============================================================
+   STATIC IMAGES
+============================================================ */
+
+.portfolio-image {
+  width: 100%;
+  max-width: 1150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer-text {
+  color: #68758A;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+</style>
+<div class="bslib-grid-item html-fill-item tab-content bslib-grid" data-layout="flow" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div id="overview" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-overview">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: 130px 430px; grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="metric-box html-fill-item html-fill-container">
+  <div class="metric-icon html-fill-item html-fill-container">◈</div>
+  <div class="metric-value html-fill-item html-fill-container">2,893</div>
+  <div class="metric-label html-fill-item html-fill-container">Publications</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="metric-box html-fill-item html-fill-container">
+  <div class="metric-icon html-fill-item html-fill-container">⌁</div>
+  <div class="metric-value html-fill-item html-fill-container">2,743</div>
+  <div class="metric-label html-fill-item html-fill-container">Abstracts analyzed</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="metric-box html-fill-item html-fill-container">
+  <div class="metric-icon html-fill-item html-fill-container">✦</div>
+  <div class="metric-value metric-cyan html-fill-item html-fill-container">4</div>
+  <div class="metric-label html-fill-item html-fill-container">LDA topics</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="metric-box html-fill-item html-fill-container">
+  <div class="metric-icon html-fill-item html-fill-container">⌘</div>
+  <div class="metric-value html-fill-item html-fill-container">3</div>
+  <div class="metric-label html-fill-item html-fill-container">Communities</div>
+</div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-2887f36d0515c9c6a65e" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-2887f36d0515c9c6a65e">{"x":{"visdat":{"47fc10ec4d11":["function () ","plotlyVisDat"],"47fc6b5536a3":["function () ","data"],"47fc47d94a87":["function () ","data"],"47fc307f41c0":["function () ","data"],"47fc5ceb1552":["function () ","data"]},"cur_data":"47fc5ceb1552","attrs":{"47fc6b5536a3":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","name":"Topic 1","marker":{"size":14,"color":"#22D3EE"},"text":{},"hoverinfo":"text","inherit":true},"47fc47d94a87":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","name":"Topic 2","marker":{"size":14,"color":"#8B5CF6"},"text":{},"hoverinfo":"text","inherit":true},"47fc307f41c0":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","name":"Topic 3","marker":{"size":14,"color":"#EC4899"},"text":{},"hoverinfo":"text","inherit":true},"47fc5ceb1552":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"scatter","mode":"markers","name":"Topic 4","marker":{"size":14,"color":"#34D399"},"text":{},"hoverinfo":"text","inherit":true}},"layout":{"height":360,"margin":{"b":45,"l":100,"t":25,"r":30},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","font":{"color":"#AAB5C8"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Term rank","gridcolor":"#1D2738"},"yaxis":{"domain":[0,1],"automargin":true,"title":"","gridcolor":"#1D2738","type":"category","categoryorder":"array","categoryarray":["américa","analisis","analizar","analysis","brasil","centro","ciencia","científica","contexto","cultura","derecho","diferentes","different","educación","espacio","filosofía","forma","formación","health","investigacion","latina","libro","obra","politica","political","políticas","prácticas","producción","relaciones","research","revista","siglo","sociedad","studies","study","teoria","teoría","theoretical","theory","work"]},"legend":{"bgcolor":"rgba(0,0,0,0)"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true},"data":[{"x":[1,2,3,4,5,6,7,8,9,10],"y":["research","work","political","analysis","study","studies","different","health","theory","theoretical"],"type":"scatter","mode":"markers","name":"Topic 1","marker":{"color":"#22D3EE","size":14,"line":{"color":"rgba(31,119,180,1)"}},"text":["<b> research <\/b> <br> Topic 1 <br>Rank: 1","<b> work <\/b> <br> Topic 1 <br>Rank: 2","<b> political <\/b> <br> Topic 1 <br>Rank: 3","<b> analysis <\/b> <br> Topic 1 <br>Rank: 4","<b> study <\/b> <br> Topic 1 <br>Rank: 5","<b> studies <\/b> <br> Topic 1 <br>Rank: 6","<b> different <\/b> <br> Topic 1 <br>Rank: 7","<b> health <\/b> <br> Topic 1 <br>Rank: 8","<b> theory <\/b> <br> Topic 1 <br>Rank: 9","<b> theoretical <\/b> <br> Topic 1 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"line":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10],"y":["latina","investigacion","politica","centro","forma","brasil","cultura","teoria","américa","analisis"],"type":"scatter","mode":"markers","name":"Topic 2","marker":{"color":"#8B5CF6","size":14,"line":{"color":"rgba(255,127,14,1)"}},"text":["<b> latina <\/b> <br> Topic 2 <br>Rank: 1","<b> investigacion <\/b> <br> Topic 2 <br>Rank: 2","<b> politica <\/b> <br> Topic 2 <br>Rank: 3","<b> centro <\/b> <br> Topic 2 <br>Rank: 4","<b> forma <\/b> <br> Topic 2 <br>Rank: 5","<b> brasil <\/b> <br> Topic 2 <br>Rank: 6","<b> cultura <\/b> <br> Topic 2 <br>Rank: 7","<b> teoria <\/b> <br> Topic 2 <br>Rank: 8","<b> américa <\/b> <br> Topic 2 <br>Rank: 9","<b> analisis <\/b> <br> Topic 2 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"line":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10],"y":["educación","políticas","prácticas","producción","relaciones","diferentes","analizar","contexto","espacio","formación"],"type":"scatter","mode":"markers","name":"Topic 3","marker":{"color":"#EC4899","size":14,"line":{"color":"rgba(44,160,44,1)"}},"text":["<b> educación <\/b> <br> Topic 3 <br>Rank: 1","<b> políticas <\/b> <br> Topic 3 <br>Rank: 2","<b> prácticas <\/b> <br> Topic 3 <br>Rank: 3","<b> producción <\/b> <br> Topic 3 <br>Rank: 4","<b> relaciones <\/b> <br> Topic 3 <br>Rank: 5","<b> diferentes <\/b> <br> Topic 3 <br>Rank: 6","<b> analizar <\/b> <br> Topic 3 <br>Rank: 7","<b> contexto <\/b> <br> Topic 3 <br>Rank: 8","<b> espacio <\/b> <br> Topic 3 <br>Rank: 9","<b> formación <\/b> <br> Topic 3 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"line":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10],"y":["teoría","ciencia","siglo","revista","libro","sociedad","obra","derecho","científica","filosofía"],"type":"scatter","mode":"markers","name":"Topic 4","marker":{"color":"#34D399","size":14,"line":{"color":"rgba(214,39,40,1)"}},"text":["<b> teoría <\/b> <br> Topic 4 <br>Rank: 1","<b> ciencia <\/b> <br> Topic 4 <br>Rank: 2","<b> siglo <\/b> <br> Topic 4 <br>Rank: 3","<b> revista <\/b> <br> Topic 4 <br>Rank: 4","<b> libro <\/b> <br> Topic 4 <br>Rank: 5","<b> sociedad <\/b> <br> Topic 4 <br>Rank: 6","<b> obra <\/b> <br> Topic 4 <br>Rank: 7","<b> derecho <\/b> <br> Topic 4 <br>Rank: 8","<b> científica <\/b> <br> Topic 4 <br>Rank: 9","<b> filosofía <\/b> <br> Topic 4 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"line":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div>
+</div>
+<div id="topics-1" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-topics-1">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: 150px 500px 120px; grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">TOPIC 01</div>
+<div class="topic-title html-fill-item html-fill-container">Research &amp; Knowledge</div>
+<div class="topic-text html-fill-item html-fill-container">
+Research · Political Analysis · Studies · Theory
+</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">TOPIC 02</div>
+<div class="topic-title html-fill-item html-fill-container">Latin American Sociology</div>
+<div class="topic-text html-fill-item html-fill-container">
+Latin America · Politics · Brazil · Culture
+</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">TOPIC 03</div>
+<div class="topic-title html-fill-item html-fill-container">Education &amp; Society</div>
+<div class="topic-text html-fill-item html-fill-container">
+Education · Policies · Practices · Relations
+</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">TOPIC 04</div>
+<div class="topic-title html-fill-item html-fill-container">Theory &amp; Culture</div>
+<div class="topic-text html-fill-item html-fill-container">
+Theory · Science · Society · Literature
+</div>
+</div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="visNetwork html-widget html-fill-item html-fill-container" id="htmlwidget-49d3adbd63780a34c85d" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-49d3adbd63780a34c85d">{"x":{"nodes":{"id":["T1","T2","T3","T4","term_1","term_2","term_3","term_4","term_5","term_6","term_7","term_8","term_9","term_10","term_11","term_12","term_13","term_14","term_15","term_16","term_17","term_18","term_19","term_20","term_21","term_22","term_23","term_24","term_25","term_26","term_27","term_28","term_29","term_30","term_31","term_32","term_33","term_34","term_35","term_36","term_37","term_38","term_39","term_40"],"label":["TOPIC 1","TOPIC 2","TOPIC 3","TOPIC 4","research","work","political","analysis","study","studies","different","health","theory","theoretical","latina","investigacion","politica","centro","forma","brasil","cultura","teoria","américa","analisis","educación","políticas","prácticas","producción","relaciones","diferentes","analizar","contexto","espacio","formación","teoría","ciencia","siglo","revista","libro","sociedad","obra","derecho","científica","filosofía"],"group":["Topic 1","Topic 2","Topic 3","Topic 4","Topic 1","Topic 1","Topic 1","Topic 1","Topic 1","Topic 1","Topic 1","Topic 1","Topic 1","Topic 1","Topic 2","Topic 2","Topic 2","Topic 2","Topic 2","Topic 2","Topic 2","Topic 2","Topic 2","Topic 2","Topic 3","Topic 3","Topic 3","Topic 3","Topic 3","Topic 3","Topic 3","Topic 3","Topic 3","Topic 3","Topic 4","Topic 4","Topic 4","Topic 4","Topic 4","Topic 4","Topic 4","Topic 4","Topic 4","Topic 4"],"value":[35,35,35,35,25,23.5,22,20.5,19,17.5,16,14.5,13,11.5,25,23.5,22,20.5,19,17.5,16,14.5,13,11.5,25,23.5,22,20.5,19,17.5,16,14.5,13,11.5,25,23.5,22,20.5,19,17.5,16,14.5,13,11.5],"title":["<b>Topic 1 <\/b><br> Research & Knowledge","<b>Topic 2 <\/b><br> Latin American Sociology","<b>Topic 3 <\/b><br> Education & Society","<b>Topic 4 <\/b><br> Theory & Culture","<b> research <\/b><br> Topic 1 <br>Rank: 1","<b> work <\/b><br> Topic 1 <br>Rank: 2","<b> political <\/b><br> Topic 1 <br>Rank: 3","<b> analysis <\/b><br> Topic 1 <br>Rank: 4","<b> study <\/b><br> Topic 1 <br>Rank: 5","<b> studies <\/b><br> Topic 1 <br>Rank: 6","<b> different <\/b><br> Topic 1 <br>Rank: 7","<b> health <\/b><br> Topic 1 <br>Rank: 8","<b> theory <\/b><br> Topic 1 <br>Rank: 9","<b> theoretical <\/b><br> Topic 1 <br>Rank: 10","<b> latina <\/b><br> Topic 2 <br>Rank: 1","<b> investigacion <\/b><br> Topic 2 <br>Rank: 2","<b> politica <\/b><br> Topic 2 <br>Rank: 3","<b> centro <\/b><br> Topic 2 <br>Rank: 4","<b> forma <\/b><br> Topic 2 <br>Rank: 5","<b> brasil <\/b><br> Topic 2 <br>Rank: 6","<b> cultura <\/b><br> Topic 2 <br>Rank: 7","<b> teoria <\/b><br> Topic 2 <br>Rank: 8","<b> américa <\/b><br> Topic 2 <br>Rank: 9","<b> analisis <\/b><br> Topic 2 <br>Rank: 10","<b> educación <\/b><br> Topic 3 <br>Rank: 1","<b> políticas <\/b><br> Topic 3 <br>Rank: 2","<b> prácticas <\/b><br> Topic 3 <br>Rank: 3","<b> producción <\/b><br> Topic 3 <br>Rank: 4","<b> relaciones <\/b><br> Topic 3 <br>Rank: 5","<b> diferentes <\/b><br> Topic 3 <br>Rank: 6","<b> analizar <\/b><br> Topic 3 <br>Rank: 7","<b> contexto <\/b><br> Topic 3 <br>Rank: 8","<b> espacio <\/b><br> Topic 3 <br>Rank: 9","<b> formación <\/b><br> Topic 3 <br>Rank: 10","<b> teoría <\/b><br> Topic 4 <br>Rank: 1","<b> ciencia <\/b><br> Topic 4 <br>Rank: 2","<b> siglo <\/b><br> Topic 4 <br>Rank: 3","<b> revista <\/b><br> Topic 4 <br>Rank: 4","<b> libro <\/b><br> Topic 4 <br>Rank: 5","<b> sociedad <\/b><br> Topic 4 <br>Rank: 6","<b> obra <\/b><br> Topic 4 <br>Rank: 7","<b> derecho <\/b><br> Topic 4 <br>Rank: 8","<b> científica <\/b><br> Topic 4 <br>Rank: 9","<b> filosofía <\/b><br> Topic 4 <br>Rank: 10"]},"edges":{"from":["T1","T1","T1","T1","T1","T1","T1","T1","T1","T1","T2","T2","T2","T2","T2","T2","T2","T2","T2","T2","T3","T3","T3","T3","T3","T3","T3","T3","T3","T3","T4","T4","T4","T4","T4","T4","T4","T4","T4","T4"],"to":["term_1","term_2","term_3","term_4","term_5","term_6","term_7","term_8","term_9","term_10","term_11","term_12","term_13","term_14","term_15","term_16","term_17","term_18","term_19","term_20","term_21","term_22","term_23","term_24","term_25","term_26","term_27","term_28","term_29","term_30","term_31","term_32","term_33","term_34","term_35","term_36","term_37","term_38","term_39","term_40"],"width":[3,2.8,2.6,2.4,2.2,2,1.8,1.6,1.4,1.2,3,2.8,2.6,2.4,2.2,2,1.8,1.6,1.4,1.2,3,2.8,2.6,2.4,2.2,2,1.8,1.6,1.4,1.2,3,2.8,2.6,2.4,2.2,2,1.8,1.6,1.4,1.2]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","borderWidth":1,"font":{"color":"#E8EDF7","size":16,"face":"Arial"},"scaling":{"min":8,"max":35}},"manipulation":{"enabled":false},"groups":{"Topic 1":{"color":{"background":"#22D3EE","border":"#67E8F9","highlight":"#67E8F9"},"font":{"color":"#FFFFFF","size":20,"face":"Arial"}},"Topic 2":{"color":{"background":"#8B5CF6","border":"#A78BFA","highlight":"#C4B5FD"},"font":{"color":"#FFFFFF","size":20,"face":"Arial"}},"Topic 3":{"color":{"background":"#EC4899","border":"#F472B6","highlight":"#F9A8D4"},"font":{"color":"#FFFFFF","size":20,"face":"Arial"}},"useDefaultGroups":true,"Topic 4":{"color":{"background":"#34D399","border":"#6EE7B7","highlight":"#A7F3D0"},"font":{"color":"#FFFFFF","size":20,"face":"Arial"}}},"edges":{"color":{"color":"#526074","highlight":"#22D3EE","hover":"#22D3EE"},"smooth":{"enabled":true,"type":"dynamic"},"scaling":{"min":1,"max":5}},"physics":{"solver":"forceAtlas2Based","stabilization":{"enabled":true,"iterations":250},"enabled":true,"forceAtlas2Based":{"gravitationalConstant":-35,"centralGravity":0.01,"springLength":130,"springConstant":0.08,"damping":0.4}},"interaction":{"dragNodes":true,"dragView":true,"hover":true,"navigationButtons":true,"zoomView":true,"zoomSpeed":1},"layout":{"randomSeed":42}},"groups":["Topic 1","Topic 2","Topic 3","Topic 4"],"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":true,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false,"variable":"group","main":"Select by group","values":["Topic 1","Topic 2","Topic 3","Topic 4"]},"main":null,"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":true,"degree":1,"algorithm":"all","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":false,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"tooltipStay":300,"tooltipStyle":"position: fixed;visibility:hidden;padding: 5px;white-space: nowrap;font-family: verdana;font-size:14px;font-color:#000000;background-color: #f5f4ed;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;border: 1px solid #808074;box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="insight-box html-fill-item html-fill-container">
+<b>Interactive network</b><br><br>
+Drag nodes · Zoom · Pan · Hover · Select topics · Highlight connections
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="text-relevance" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-text-relevance">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: 480px 130px; grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-f15e2fef62325d89afd7" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-f15e2fef62325d89afd7">{"x":{"visdat":{"47fc7a345545":["function () ","plotlyVisDat"]},"cur_data":"47fc7a345545","attrs":{"47fc7a345545":{"x":{},"y":{},"orientation":"h","marker":{"color":"#22D3EE"},"text":{},"hoverinfo":"text","alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"height":410,"margin":{"b":45,"l":110,"t":25,"r":30},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","font":{"color":"#AAB5C8"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Relative TF-IDF","gridcolor":"#1D2738"},"yaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["health","estudio","educación","work","sociología","political","artículo","ciencias","campo","sociology","estudios","análisis","investigación","research","historia","política","argentina","sociales","trabajo","social"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true},"data":[{"x":[100,94,91,88,85,81,79,77,75,73,71,69,67,65,63,61,59,57,55,53],"y":["social","trabajo","sociales","argentina","política","historia","research","investigación","análisis","estudios","sociology","campo","ciencias","artículo","political","sociología","work","educación","estudio","health"],"orientation":"h","marker":{"color":"#22D3EE","line":{"color":"rgba(31,119,180,1)"}},"text":["<b> social <\/b> <br>Relative TF-IDF: 100","<b> trabajo <\/b> <br>Relative TF-IDF: 94","<b> sociales <\/b> <br>Relative TF-IDF: 91","<b> argentina <\/b> <br>Relative TF-IDF: 88","<b> política <\/b> <br>Relative TF-IDF: 85","<b> historia <\/b> <br>Relative TF-IDF: 81","<b> research <\/b> <br>Relative TF-IDF: 79","<b> investigación <\/b> <br>Relative TF-IDF: 77","<b> análisis <\/b> <br>Relative TF-IDF: 75","<b> estudios <\/b> <br>Relative TF-IDF: 73","<b> sociology <\/b> <br>Relative TF-IDF: 71","<b> campo <\/b> <br>Relative TF-IDF: 69","<b> ciencias <\/b> <br>Relative TF-IDF: 67","<b> artículo <\/b> <br>Relative TF-IDF: 65","<b> political <\/b> <br>Relative TF-IDF: 63","<b> sociología <\/b> <br>Relative TF-IDF: 61","<b> work <\/b> <br>Relative TF-IDF: 59","<b> educación <\/b> <br>Relative TF-IDF: 57","<b> estudio <\/b> <br>Relative TF-IDF: 55","<b> health <\/b> <br>Relative TF-IDF: 53"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"type":"bar","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="insight-box html-fill-item html-fill-container">
+<b>Most informative vocabulary</b><br><br>
+Social sciences · Argentina · Politics · Research ·
+Analysis · Sociology · Education
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="research-evolution" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-research-evolution">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: 850px 150px; grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div style="
+  width:100%;
+  background:#0E141F;
+  border:1px solid #1D2738;
+  border-radius:18px;
+  padding:20px;
+  box-sizing:border-box;
+" class="html-fill-item html-fill-container">
+
+<img src="images/topic_evolution.png" style="
+    width:100%;
+    height:auto;
+    max-height:700px;
+    object-fit:contain;
+    display:block;
+    margin:auto;
+    border-radius:12px;
+  " alt="Topic evolution through time">
+
+</div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="insight-box html-fill-item html-fill-container">
+
+<b>RESEARCH EVOLUTION</b><br><br>
+
+The distribution of topic assignments was aggregated by
+publication year to explore changes in thematic presence
+across the scientific literature.
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="network-analysis" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-network-analysis">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: 720px 180px; grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div style="
+  width:100%;
+  height:650px;
+  background:#0B111B;
+  border:1px solid #263247;
+  border-radius:18px;
+  padding:12px;
+  box-sizing:border-box;
+  overflow:hidden;
+" class="html-fill-item html-fill-container">
+
+<div style="
+  width:100%;
+  height:100%;
+  background:#F8FAFC;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+" class="html-fill-item html-fill-container">
+
+<img src="images/cooccurrence_network.png" alt="Co-occurrence Network" style="
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    border-radius:10px;
+  ">
+
+</div>
+</div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div style="
+  width:100%;
+  background:#0B111B;
+  border:1px solid #263247;
+  border-left:3px solid #22D3EE;
+  border-radius:12px;
+  padding:22px 26px;
+  box-sizing:border-box;
+  color:#FFFFFF;
+  font-size:14px;
+  line-height:1.7;
+" class="html-fill-item html-fill-container">
+
+<div style="
+  color:#FFFFFF;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:15px;
+" class="html-fill-item html-fill-container">
+Louvain Community Detection
+</div>
+
+<div style="color:#FFFFFF;" class="html-fill-item html-fill-container">
+
+The co-occurrence network represents relationships between
+terms appearing within the same scientific documents.<br><br>
+
+The nodes represent scientific terms and the edges represent
+co-occurrence relationships within documents.<br><br>
+
+The Louvain algorithm identified
+<b style="color:#22D3EE;">3 communities</b>
+of strongly connected terms.
+
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="lda-topics" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-lda-topics">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: 480px 130px; grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div class="plotly html-widget html-fill-item html-fill-container" id="htmlwidget-65e3a5a2866aaf336044" style="width:100%;height:406px;"></div>
+<script type="application/json" data-for="htmlwidget-65e3a5a2866aaf336044">{"x":{"visdat":{"47fc11f26e33":["function () ","plotlyVisDat"]},"cur_data":"47fc11f26e33","attrs":{"47fc11f26e33":{"x":{},"y":{},"mode":"markers","marker":{"size":15},"text":{},"hoverinfo":"text","color":{},"colors":["#22D3EE","#8B5CF6","#EC4899","#34D399"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"height":410,"margin":{"b":45,"l":110,"t":25,"r":30},"paper_bgcolor":"rgba(0,0,0,0)","plot_bgcolor":"rgba(0,0,0,0)","font":{"color":"#AAB5C8"},"xaxis":{"domain":[0,1],"automargin":true,"title":"Rank","gridcolor":"#1D2738"},"yaxis":{"domain":[0,1],"automargin":true,"title":"","gridcolor":"#1D2738","type":"category","categoryorder":"array","categoryarray":["américa","analisis","analizar","analysis","brasil","centro","ciencia","científica","contexto","cultura","derecho","diferentes","different","educación","espacio","filosofía","forma","formación","health","investigacion","latina","libro","obra","politica","political","políticas","prácticas","producción","relaciones","research","revista","siglo","sociedad","studies","study","teoria","teoría","theoretical","theory","work"]},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"responsive":true},"data":[{"x":[1,2,3,4,5,6,7,8,9,10],"y":["research","work","political","analysis","study","studies","different","health","theory","theoretical"],"mode":"markers","marker":{"color":"rgba(34,211,238,1)","size":15,"line":{"color":"rgba(34,211,238,1)"}},"text":["<b> research <\/b> <br> Topic 1 <br>Rank: 1","<b> work <\/b> <br> Topic 1 <br>Rank: 2","<b> political <\/b> <br> Topic 1 <br>Rank: 3","<b> analysis <\/b> <br> Topic 1 <br>Rank: 4","<b> study <\/b> <br> Topic 1 <br>Rank: 5","<b> studies <\/b> <br> Topic 1 <br>Rank: 6","<b> different <\/b> <br> Topic 1 <br>Rank: 7","<b> health <\/b> <br> Topic 1 <br>Rank: 8","<b> theory <\/b> <br> Topic 1 <br>Rank: 9","<b> theoretical <\/b> <br> Topic 1 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"type":"scatter","name":"Topic 1","textfont":{"color":"rgba(34,211,238,1)"},"error_y":{"color":"rgba(34,211,238,1)"},"error_x":{"color":"rgba(34,211,238,1)"},"line":{"color":"rgba(34,211,238,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10],"y":["latina","investigacion","politica","centro","forma","brasil","cultura","teoria","américa","analisis"],"mode":"markers","marker":{"color":"rgba(139,92,246,1)","size":15,"line":{"color":"rgba(139,92,246,1)"}},"text":["<b> latina <\/b> <br> Topic 2 <br>Rank: 1","<b> investigacion <\/b> <br> Topic 2 <br>Rank: 2","<b> politica <\/b> <br> Topic 2 <br>Rank: 3","<b> centro <\/b> <br> Topic 2 <br>Rank: 4","<b> forma <\/b> <br> Topic 2 <br>Rank: 5","<b> brasil <\/b> <br> Topic 2 <br>Rank: 6","<b> cultura <\/b> <br> Topic 2 <br>Rank: 7","<b> teoria <\/b> <br> Topic 2 <br>Rank: 8","<b> américa <\/b> <br> Topic 2 <br>Rank: 9","<b> analisis <\/b> <br> Topic 2 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"type":"scatter","name":"Topic 2","textfont":{"color":"rgba(139,92,246,1)"},"error_y":{"color":"rgba(139,92,246,1)"},"error_x":{"color":"rgba(139,92,246,1)"},"line":{"color":"rgba(139,92,246,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10],"y":["educación","políticas","prácticas","producción","relaciones","diferentes","analizar","contexto","espacio","formación"],"mode":"markers","marker":{"color":"rgba(236,72,153,1)","size":15,"line":{"color":"rgba(236,72,153,1)"}},"text":["<b> educación <\/b> <br> Topic 3 <br>Rank: 1","<b> políticas <\/b> <br> Topic 3 <br>Rank: 2","<b> prácticas <\/b> <br> Topic 3 <br>Rank: 3","<b> producción <\/b> <br> Topic 3 <br>Rank: 4","<b> relaciones <\/b> <br> Topic 3 <br>Rank: 5","<b> diferentes <\/b> <br> Topic 3 <br>Rank: 6","<b> analizar <\/b> <br> Topic 3 <br>Rank: 7","<b> contexto <\/b> <br> Topic 3 <br>Rank: 8","<b> espacio <\/b> <br> Topic 3 <br>Rank: 9","<b> formación <\/b> <br> Topic 3 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"type":"scatter","name":"Topic 3","textfont":{"color":"rgba(236,72,153,1)"},"error_y":{"color":"rgba(236,72,153,1)"},"error_x":{"color":"rgba(236,72,153,1)"},"line":{"color":"rgba(236,72,153,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1,2,3,4,5,6,7,8,9,10],"y":["teoría","ciencia","siglo","revista","libro","sociedad","obra","derecho","científica","filosofía"],"mode":"markers","marker":{"color":"rgba(52,211,153,1)","size":15,"line":{"color":"rgba(52,211,153,1)"}},"text":["<b> teoría <\/b> <br> Topic 4 <br>Rank: 1","<b> ciencia <\/b> <br> Topic 4 <br>Rank: 2","<b> siglo <\/b> <br> Topic 4 <br>Rank: 3","<b> revista <\/b> <br> Topic 4 <br>Rank: 4","<b> libro <\/b> <br> Topic 4 <br>Rank: 5","<b> sociedad <\/b> <br> Topic 4 <br>Rank: 6","<b> obra <\/b> <br> Topic 4 <br>Rank: 7","<b> derecho <\/b> <br> Topic 4 <br>Rank: 8","<b> científica <\/b> <br> Topic 4 <br>Rank: 9","<b> filosofía <\/b> <br> Topic 4 <br>Rank: 10"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text"],"type":"scatter","name":"Topic 4","textfont":{"color":"rgba(52,211,153,1)"},"error_y":{"color":"rgba(52,211,153,1)"},"error_x":{"color":"rgba(52,211,153,1)"},"line":{"color":"rgba(52,211,153,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="insight-box html-fill-item html-fill-container">
+
+<b>Topic 1:</b> Research, political analysis and knowledge<br>
+<b>Topic 2:</b> Latin American sociology, politics and culture<br>
+<b>Topic 3:</b> Education, policies and social relations<br>
+<b>Topic 4:</b> Theory, science and academic production
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="methodology" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-methodology">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: 170px 170px 80px; grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">ANALYTICAL PIPELINE</div>
+<div class="topic-title html-fill-item html-fill-container">
+OpenAlex → NLP → TF-IDF → Network → Louvain → LDA → Time
+</div>
+<div class="topic-text html-fill-item html-fill-container">
+Bibliographic acquisition · Text preprocessing ·
+Term relevance · Network analysis · Topic modeling ·
+Temporal analysis
+</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">CORPUS</div>
+<div class="topic-title html-fill-item html-fill-container">2,893 publications</div>
+<div class="topic-text html-fill-item html-fill-container">
+2,743 abstracts · 4 topics · 3 communities
+</div>
+</div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">TECH STACK</div>
+<div class="topic-title html-fill-item html-fill-container">
+R · Quanteda · Tidyverse · Plotly
+</div>
+<div class="topic-text html-fill-item html-fill-container">
+Igraph · Ggraph · OpenAlex · openalexR · visNetwork · Quarto
+</div>
+</div>
+</div><div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="topic-box html-fill-item html-fill-container">
+<div class="topic-label html-fill-item html-fill-container">DATA SCIENCE PORTFOLIO</div>
+<div class="topic-title html-fill-item html-fill-container">
+Sociology Research Intelligence
+</div>
+<div class="topic-text html-fill-item html-fill-container">
+Computational analysis of scientific literature using
+NLP, topic modeling and network analysis.
+</div>
+</div>
+</div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="footer-text html-fill-item html-fill-container">
+OpenAlex · Argentine scientific publications · Sociology
+</div>
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /container fluid -->
+
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
+
+
+
+</body></html>

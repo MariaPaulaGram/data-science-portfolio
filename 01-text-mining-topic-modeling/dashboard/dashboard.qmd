@@ -1,0 +1,984 @@
+---
+title: "Sociology Research Intelligence"
+subtitle: "Computational analysis of Argentine scientific literature"
+format:
+  dashboard:
+    theme: darkly
+    orientation: rows
+    scrolling: true
+---
+
+```{r}
+library(tidyverse)
+library(plotly)
+library(visNetwork)
+
+# ============================================================
+# METRICS
+# ============================================================
+
+n_publications <- 2893
+n_abstracts <- 2743
+n_topics <- 4
+n_communities <- 3
+
+# ============================================================
+# TOPIC DATA
+# ============================================================
+
+lda_terms <- tribble(
+  ~topic, ~term, ~rank,
+
+  "Topic 1", "research", 1,
+  "Topic 1", "work", 2,
+  "Topic 1", "political", 3,
+  "Topic 1", "analysis", 4,
+  "Topic 1", "study", 5,
+  "Topic 1", "studies", 6,
+  "Topic 1", "different", 7,
+  "Topic 1", "health", 8,
+  "Topic 1", "theory", 9,
+  "Topic 1", "theoretical", 10,
+
+  "Topic 2", "latina", 1,
+  "Topic 2", "investigacion", 2,
+  "Topic 2", "politica", 3,
+  "Topic 2", "centro", 4,
+  "Topic 2", "forma", 5,
+  "Topic 2", "brasil", 6,
+  "Topic 2", "cultura", 7,
+  "Topic 2", "teoria", 8,
+  "Topic 2", "américa", 9,
+  "Topic 2", "analisis", 10,
+
+  "Topic 3", "educación", 1,
+  "Topic 3", "políticas", 2,
+  "Topic 3", "prácticas", 3,
+  "Topic 3", "producción", 4,
+  "Topic 3", "relaciones", 5,
+  "Topic 3", "diferentes", 6,
+  "Topic 3", "analizar", 7,
+  "Topic 3", "contexto", 8,
+  "Topic 3", "espacio", 9,
+  "Topic 3", "formación", 10,
+
+  "Topic 4", "teoría", 1,
+  "Topic 4", "ciencia", 2,
+  "Topic 4", "siglo", 3,
+  "Topic 4", "revista", 4,
+  "Topic 4", "libro", 5,
+  "Topic 4", "sociedad", 6,
+  "Topic 4", "obra", 7,
+  "Topic 4", "derecho", 8,
+  "Topic 4", "científica", 9,
+  "Topic 4", "filosofía", 10
+)
+
+# ============================================================
+# COLORS
+# ============================================================
+
+topic_colors <- c(
+  "Topic 1" = "#22D3EE",
+  "Topic 2" = "#8B5CF6",
+  "Topic 3" = "#EC4899",
+  "Topic 4" = "#34D399"
+)
+
+# ============================================================
+# TF-IDF
+# ============================================================
+
+tfidf_terms <- tribble(
+  ~term, ~score,
+
+  "social", 100,
+  "trabajo", 94,
+  "sociales", 91,
+  "argentina", 88,
+  "política", 85,
+  "historia", 81,
+  "research", 79,
+  "investigación", 77,
+  "análisis", 75,
+  "estudios", 73,
+  "sociology", 71,
+  "campo", 69,
+  "ciencias", 67,
+  "artículo", 65,
+  "political", 63,
+  "sociología", 61,
+  "work", 59,
+  "educación", 57,
+  "estudio", 55,
+  "health", 53
+)
+
+# ============================================================
+# INTERACTIVE TOPIC NETWORK
+# ============================================================
+
+topic_nodes <- tibble(
+  id = paste0("T", 1:4),
+  label = paste0("TOPIC ", 1:4),
+  group = paste0("Topic ", 1:4),
+  value = 35,
+  title = paste(
+    "<b>Topic", 1:4, "</b><br>",
+    c(
+      "Research & Knowledge",
+      "Latin American Sociology",
+      "Education & Society",
+      "Theory & Culture"
+    )
+  )
+)
+
+term_nodes <- lda_terms %>%
+  mutate(
+    id = paste0("term_", row_number()),
+    group = topic,
+    value = 10 + (11 - rank) * 1.5,
+    title = paste(
+      "<b>", term, "</b><br>",
+      topic,
+      "<br>Rank:", rank
+    )
+  ) %>%
+  select(
+    id,
+    label = term,
+    group,
+    value,
+    title
+  )
+
+network_nodes <- bind_rows(
+  topic_nodes,
+  term_nodes
+)
+
+network_edges <- lda_terms %>%
+  mutate(
+    from = paste0("T", as.numeric(str_remove(topic, "Topic "))),
+    to = paste0("term_", row_number()),
+    width = 1 + (11 - rank) / 5
+  ) %>%
+  select(
+    from,
+    to,
+    width
+  )
+```
+
+```{=html}
+<style>
+
+/* ============================================================
+   GLOBAL
+============================================================ */
+
+body {
+  background: #070A10 !important;
+  color: #E8EDF7 !important;
+  font-family: Inter, Arial, sans-serif !important;
+}
+
+.dashboard-page {
+  background: #070A10 !important;
+}
+
+.navbar {
+  background: #080C14 !important;
+  border-bottom: 1px solid #1B2434 !important;
+}
+
+.navbar-title {
+  color: #F7F9FF !important;
+  font-weight: 800 !important;
+  letter-spacing: .3px;
+}
+
+.nav-link {
+  color: #8B96AA !important;
+  font-weight: 500 !important;
+}
+
+.nav-link:hover {
+  color: #22D3EE !important;
+}
+
+/* ============================================================
+   CARDS
+============================================================ */
+
+.card {
+  background: #0E141F !important;
+  border: 1px solid #1D2738 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 35px rgba(0,0,0,.35) !important;
+  overflow: hidden !important;
+}
+
+.card-header {
+  background: #0E141F !important;
+  border-bottom: 1px solid #1D2738 !important;
+  color: #F7F9FF !important;
+  font-weight: 700 !important;
+}
+
+.card-body {
+  background: #0E141F !important;
+}
+
+/* ============================================================
+   KPI
+============================================================ */
+
+.metric-box {
+  padding: 18px 20px;
+  min-height: 95px;
+}
+
+.metric-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: #172234;
+  color: #22D3EE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 9px;
+}
+
+.metric-value {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1;
+  color: #F7F9FF;
+}
+
+.metric-cyan {
+  color: #22D3EE !important;
+}
+
+.metric-label {
+  margin-top: 7px;
+  font-size: 10px;
+  color: #78859A;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   TOPIC CARDS
+============================================================ */
+
+.topic-box {
+  padding: 18px;
+  min-height: 105px;
+  border-radius: 15px;
+  background: #0E141F;
+  border: 1px solid #1D2738;
+}
+
+.topic-label {
+  color: #22D3EE;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.topic-title {
+  color: #F7F9FF;
+  font-size: 17px;
+  font-weight: 750;
+  margin-top: 7px;
+}
+
+.topic-text {
+  color: #8995AA;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 6px;
+}
+
+/* ============================================================
+   INSIGHT
+============================================================ */
+
+.insight-box {
+  padding: 17px 20px;
+  background: #0B111B;
+  border-left: 3px solid #22D3EE;
+  border-radius: 8px;
+  color: #AAB5C8;
+  font-size: 13px;
+}
+
+/* ============================================================
+   STATIC IMAGES
+============================================================ */
+
+.portfolio-image {
+  width: 100%;
+  max-width: 1150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+
+.footer-text {
+  color: #68758A;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+</style>
+```
+
+# Overview
+
+## Row {height=130}
+
+### Publications
+
+```{=html}
+<div class="metric-box">
+  <div class="metric-icon">◈</div>
+  <div class="metric-value">2,893</div>
+  <div class="metric-label">Publications</div>
+</div>
+```
+
+### Abstracts
+
+```{=html}
+<div class="metric-box">
+  <div class="metric-icon">⌁</div>
+  <div class="metric-value">2,743</div>
+  <div class="metric-label">Abstracts analyzed</div>
+</div>
+```
+
+### Topics
+
+```{=html}
+<div class="metric-box">
+  <div class="metric-icon">✦</div>
+  <div class="metric-value metric-cyan">4</div>
+  <div class="metric-label">LDA topics</div>
+</div>
+```
+
+### Communities
+
+```{=html}
+<div class="metric-box">
+  <div class="metric-icon">⌘</div>
+  <div class="metric-value">3</div>
+  <div class="metric-label">Communities</div>
+</div>
+```
+
+## Row {height=430}
+
+### Research Intelligence
+
+```{r}
+topic_plot <- plot_ly()
+
+for (tp in unique(lda_terms$topic)) {
+
+  d <- lda_terms %>%
+    filter(topic == tp)
+
+  topic_plot <- topic_plot %>%
+    add_trace(
+      data = d,
+      x = ~rank,
+      y = ~term,
+      type = "scatter",
+      mode = "markers",
+      name = tp,
+      marker = list(
+        size = 14,
+        color = topic_colors[tp]
+      ),
+      text = ~paste(
+        "<b>", term, "</b>",
+        "<br>", topic,
+        "<br>Rank:", rank
+      ),
+      hoverinfo = "text"
+    )
+}
+
+topic_plot %>%
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    font = list(color = "#AAB5C8"),
+    xaxis = list(
+      title = "Term rank",
+      gridcolor = "#1D2738"
+    ),
+    yaxis = list(
+      title = "",
+      gridcolor = "#1D2738"
+    ),
+    legend = list(
+      bgcolor = "rgba(0,0,0,0)"
+    ),
+    height = 360,
+    margin = list(
+      l = 100,
+      r = 30,
+      t = 25,
+      b = 45
+    )
+  ) %>%
+  config(
+    responsive = TRUE
+  )
+```
+
+# Topics
+
+## Row {height=150}
+
+### Topic 01
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">TOPIC 01</div>
+<div class="topic-title">Research & Knowledge</div>
+<div class="topic-text">
+Research · Political Analysis · Studies · Theory
+</div>
+</div>
+```
+
+### Topic 02
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">TOPIC 02</div>
+<div class="topic-title">Latin American Sociology</div>
+<div class="topic-text">
+Latin America · Politics · Brazil · Culture
+</div>
+</div>
+```
+
+### Topic 03
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">TOPIC 03</div>
+<div class="topic-title">Education & Society</div>
+<div class="topic-text">
+Education · Policies · Practices · Relations
+</div>
+</div>
+```
+
+### Topic 04
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">TOPIC 04</div>
+<div class="topic-title">Theory & Culture</div>
+<div class="topic-text">
+Theory · Science · Society · Literature
+</div>
+</div>
+```
+
+## Row {height=500}
+
+### Interactive Topic Network
+
+```{r}
+visNetwork(
+  network_nodes,
+  network_edges
+) %>%
+  visNodes(
+    shape = "dot",
+    borderWidth = 1,
+    font = list(
+      color = "#E8EDF7",
+      size = 16,
+      face = "Arial"
+    ),
+    scaling = list(
+      min = 8,
+      max = 35
+    )
+  ) %>%
+  visGroups(
+    groupname = "Topic 1",
+    color = list(
+      background = "#22D3EE",
+      border = "#67E8F9",
+      highlight = "#67E8F9"
+    ),
+    font = list(
+      color = "#FFFFFF",
+      size = 20,
+      face = "Arial"
+    )
+  ) %>%
+  visGroups(
+    groupname = "Topic 2",
+    color = list(
+      background = "#8B5CF6",
+      border = "#A78BFA",
+      highlight = "#C4B5FD"
+    ),
+    font = list(
+      color = "#FFFFFF",
+      size = 20,
+      face = "Arial"
+    )
+  ) %>%
+  visGroups(
+    groupname = "Topic 3",
+    color = list(
+      background = "#EC4899",
+      border = "#F472B6",
+      highlight = "#F9A8D4"
+    ),
+    font = list(
+      color = "#FFFFFF",
+      size = 20,
+      face = "Arial"
+    )
+  ) %>%
+  visGroups(
+    groupname = "Topic 4",
+    color = list(
+      background = "#34D399",
+      border = "#6EE7B7",
+      highlight = "#A7F3D0"
+    ),
+    font = list(
+      color = "#FFFFFF",
+      size = 20,
+      face = "Arial"
+    )
+  ) %>%
+  visEdges(
+    color = list(
+      color = "#526074",
+      highlight = "#22D3EE",
+      hover = "#22D3EE"
+    ),
+    smooth = list(
+      enabled = TRUE,
+      type = "dynamic"
+    ),
+    scaling = list(
+      min = 1,
+      max = 5
+    )
+  ) %>%
+  visPhysics(
+    enabled = TRUE,
+    solver = "forceAtlas2Based",
+    forceAtlas2Based = list(
+      gravitationalConstant = -35,
+      centralGravity = 0.01,
+      springLength = 130,
+      springConstant = 0.08,
+      damping = 0.4
+    ),
+    stabilization = list(
+      enabled = TRUE,
+      iterations = 250
+    )
+  ) %>%
+  visOptions(
+    highlightNearest = list(
+      enabled = TRUE,
+      degree = 1,
+      hover = TRUE
+    ),
+    selectedBy = "group",
+    collapse = FALSE
+  ) %>%
+  visInteraction(
+    dragNodes = TRUE,
+    dragView = TRUE,
+    zoomView = TRUE,
+    hover = TRUE,
+    navigationButtons = TRUE
+  ) %>%
+  visLayout(
+    randomSeed = 42
+  )
+```
+
+## Row {height=120}
+
+### Network Interaction
+
+```{=html}
+<div class="insight-box">
+<b>Interactive network</b><br><br>
+Drag nodes · Zoom · Pan · Hover · Select topics · Highlight connections
+</div>
+```
+
+# Text Relevance
+
+## Row {height=480}
+
+### TF-IDF Explorer
+
+```{r}
+tfidf_plot <- plot_ly(
+  data = tfidf_terms,
+  x = ~score,
+  y = ~reorder(term, score),
+  type = "bar",
+  orientation = "h",
+  marker = list(
+    color = "#22D3EE"
+  ),
+  text = ~paste(
+    "<b>", term, "</b>",
+    "<br>Relative TF-IDF:", score
+  ),
+  hoverinfo = "text"
+)
+
+tfidf_plot %>%
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    font = list(color = "#AAB5C8"),
+    xaxis = list(
+      title = "Relative TF-IDF",
+      gridcolor = "#1D2738"
+    ),
+    yaxis = list(
+      title = ""
+    ),
+    height = 410,
+    margin = list(
+      l = 110,
+      r = 30,
+      t = 25,
+      b = 45
+    )
+  ) %>%
+  config(
+    responsive = TRUE
+  )
+```
+
+## Row {height=130}
+
+### Vocabulary Signal
+
+```{=html}
+<div class="insight-box">
+<b>Most informative vocabulary</b><br><br>
+Social sciences · Argentina · Politics · Research ·
+Analysis · Sociology · Education
+</div>
+```
+
+
+
+# Research Evolution
+
+## Row {height=850}
+
+### Topics Through Time
+
+```{=html}
+<div style="
+  width:100%;
+  background:#0E141F;
+  border:1px solid #1D2738;
+  border-radius:18px;
+  padding:20px;
+  box-sizing:border-box;
+">
+
+<img
+  src="images/topic_evolution.png"
+  style="
+    width:100%;
+    height:auto;
+    max-height:700px;
+    object-fit:contain;
+    display:block;
+    margin:auto;
+    border-radius:12px;
+  "
+  alt="Topic evolution through time">
+
+</div>
+```
+
+## Row {height=150}
+
+### Temporal Analysis
+
+```{=html}
+<div class="insight-box">
+
+<b>RESEARCH EVOLUTION</b><br><br>
+
+The distribution of topic assignments was aggregated by
+publication year to explore changes in thematic presence
+across the scientific literature.
+
+</div>
+```
+
+
+
+
+# Network Analysis
+
+
+## Row {height=720}
+
+### Co-occurrence Network
+
+```{=html}
+<div style="
+  width:100%;
+  height:650px;
+  background:#0B111B;
+  border:1px solid #263247;
+  border-radius:18px;
+  padding:12px;
+  box-sizing:border-box;
+  overflow:hidden;
+">
+
+<div style="
+  width:100%;
+  height:100%;
+  background:#F8FAFC;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+">
+
+<img
+  src="images/cooccurrence_network.png"
+  alt="Co-occurrence Network"
+  style="
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+    border-radius:10px;
+  "
+>
+
+</div>
+</div>
+```
+
+## Row {height=180}
+
+### Louvain Community Detection
+
+```{=html}
+<div style="
+  width:100%;
+  background:#0B111B;
+  border:1px solid #263247;
+  border-left:3px solid #22D3EE;
+  border-radius:12px;
+  padding:22px 26px;
+  box-sizing:border-box;
+  color:#FFFFFF;
+  font-size:14px;
+  line-height:1.7;
+">
+
+<div style="
+  color:#FFFFFF;
+  font-size:16px;
+  font-weight:700;
+  margin-bottom:15px;
+">
+Louvain Community Detection
+</div>
+
+<div style="color:#FFFFFF;">
+
+The co-occurrence network represents relationships between
+terms appearing within the same scientific documents.<br><br>
+
+The nodes represent scientific terms and the edges represent
+co-occurrence relationships within documents.<br><br>
+
+The Louvain algorithm identified
+<b style="color:#22D3EE;">3 communities</b>
+of strongly connected terms.
+
+</div>
+
+</div>
+```
+
+
+
+# LDA Topics
+
+## Row {height=480}
+
+### Topic Structure
+
+```{r}
+lda_plot <- plot_ly(
+  data = lda_terms,
+  x = ~rank,
+  y = ~term,
+  color = ~topic,
+  colors = topic_colors,
+  type = "scatter",
+  mode = "markers",
+  marker = list(
+    size = 15
+  ),
+  text = ~paste(
+    "<b>", term, "</b>",
+    "<br>", topic,
+    "<br>Rank:", rank
+  ),
+  hoverinfo = "text"
+)
+
+lda_plot %>%
+  layout(
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    font = list(color = "#AAB5C8"),
+    xaxis = list(
+      title = "Rank",
+      gridcolor = "#1D2738"
+    ),
+    yaxis = list(
+      title = "",
+      gridcolor = "#1D2738"
+    ),
+    height = 410,
+    margin = list(
+      l = 110,
+      r = 30,
+      t = 25,
+      b = 45
+    )
+  ) %>%
+  config(
+    responsive = TRUE
+  )
+```
+
+## Row {height=130}
+
+### Topic Interpretation
+
+```{=html}
+<div class="insight-box">
+
+<b>Topic 1:</b> Research, political analysis and knowledge<br>
+<b>Topic 2:</b> Latin American sociology, politics and culture<br>
+<b>Topic 3:</b> Education, policies and social relations<br>
+<b>Topic 4:</b> Theory, science and academic production
+
+</div>
+```
+
+# Methodology
+
+## Row {height=170}
+
+### Data Science Pipeline
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">ANALYTICAL PIPELINE</div>
+<div class="topic-title">
+OpenAlex → NLP → TF-IDF → Network → Louvain → LDA → Time
+</div>
+<div class="topic-text">
+Bibliographic acquisition · Text preprocessing ·
+Term relevance · Network analysis · Topic modeling ·
+Temporal analysis
+</div>
+</div>
+```
+
+### Dataset
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">CORPUS</div>
+<div class="topic-title">2,893 publications</div>
+<div class="topic-text">
+2,743 abstracts · 4 topics · 3 communities
+</div>
+</div>
+```
+
+## Row {height=170}
+
+### Technology
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">TECH STACK</div>
+<div class="topic-title">
+R · Quanteda · Tidyverse · Plotly
+</div>
+<div class="topic-text">
+Igraph · Ggraph · OpenAlex · openalexR · visNetwork · Quarto
+</div>
+</div>
+```
+
+### Portfolio
+
+```{=html}
+<div class="topic-box">
+<div class="topic-label">DATA SCIENCE PORTFOLIO</div>
+<div class="topic-title">
+Sociology Research Intelligence
+</div>
+<div class="topic-text">
+Computational analysis of scientific literature using
+NLP, topic modeling and network analysis.
+</div>
+</div>
+```
+
+## Row {height=80}
+
+### Data Source
+
+```{=html}
+<div class="footer-text">
+OpenAlex · Argentine scientific publications · Sociology
+</div>
+```
